@@ -1,0 +1,96 @@
+.cardcollapse {
+    display:block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 2px 5px 2px 5px;
+    cursor: pointer;
+    background: rgba(204,204,204,0.7);
+    z-index: 2;
+}
+.large-card, .cardContainer, .lrgCard {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.lrgCard div {
+    display: inline-block;
+    max-height: 230px;
+}
+.lrg-card-tile-body, .lrg-card-tile-body div {
+    width: 100%;
+}
+
+// Movie Card
+.we-row {
+    display: block;
+    width: 100%;
+}
+
+.searchMovie {  width: 100%; }
+.selectedMovies { width: 100%;}
+
+.searchMovie .searchBtnGroup, .searchMovie .searchBar {
+    display: inline-block;
+    width: 49%;
+}
+
+.lrgCard .searchMovie .searchSection md-input-container label {
+    color: rgba(255,255,255,1);
+}
+
+.lrgCard .searchMovie .searchSection md-input-container .md-input {
+    color: rgba(255,255,255,1);
+}
+
+.searchResults {
+    width: 80%;
+}
+.searchResults .itemList {
+    background: rgba(255,255,255,0.7);
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+.searchResults .itemList table {
+    width: 100%;
+}
+.searchResults .itemList table .item {
+    padding: 3px 0px 3px 0px;
+    cursor: pointer;
+}
+.searchResults .itemList table .item:hover {
+    background: rgba(0,0,0,0.8);
+    color: rgba(255,255,255,0.8);
+}
+
+.searchResults .itemList table .item .itemImg img{
+    height: 100px;
+    width: 63px;
+}
+.no-img {
+    height: 100px;
+    width: 63px;
+    background: rgba(0,0,0,1);
+    color: rgba(255,0,0,0.9);
+}
+
+.searchResults .itemList table .item .itemInfo div {
+    display: block;
+}
+
+.compare-tile {
+    background: rgba(255,255,255,1);
+    color: rgba(0,0,0,1);
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+}
+.compare-tile figure div {
+    display: block;
+    width: 100%;
+}

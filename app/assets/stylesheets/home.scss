@@ -2,52 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*Auto complete*/
-.autocompletedemoCustomTemplate .autocomplete-custom-template li {
-  border-bottom: 1px solid #ccc;
-  height: auto;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  white-space: normal;
-}
-.autocompletedemoCustomTemplate .autocomplete-custom-template li:last-child {
-  border-bottom-width: 0;
-}
-.autocompletedemoCustomTemplate .autocomplete-custom-template .item-title,
-.autocompletedemoCustomTemplate .autocomplete-custom-template .item-metadata {
-  display: block;
-  line-height: 2;
-}
-.autocompletedemoCustomTemplate .autocomplete-custom-template .item-title md-icon {
-  height: 18px;
-  width: 18px;
-}
+// Variables
+// Colors
+$blue: rgba(0,0,255,0.7);
+$red: rgba(255,0,0,0.7);
+$green: rgba(0,153,0,0.7);
+$orange: rgba(255,102,0,0.7);
 
 /**/
+.c1 { background: $blue; }
+.c2 { background: $red; }
+.c3 { background: $green; }
+.c4 { background: $orange; }
 
-.searchSection {
-  width: 100%;
-}
-
-.searchSection md-input-container, .searchSection div {
-  display: inline-block;
-}
-.searchSection md-input-container {
-  width: 60%;
-}
-.searchSection md-input-container input {
-  width: 100%;
+.we-card {
+    transition:0.5s linear all;
 }
 
-/*Results*/
-.itemList .item .itemImg, .itemList .item .itemInfo {
-  display: inline-block;
+.fade.ng-enter {
+    transition:0.5s linear all;
+    opacity:0;
+}
+.fade.ng-enter.ng-enter-active {
+  opacity:1;
 }
 
-.itemList .item .itemImg img{
-  height: 200px;
-}
-
-.item {
-  cursor: pointer;
+.we-card-body {
+    width: 100%;
+    height: 100%;
+    padding: 3px;
 }

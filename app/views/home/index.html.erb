@@ -1,70 +1,26 @@
-<div ng-controller="HomeCtrl">
-    <h1>{{pagetitle}}</h1>
-    <p>Search Text: {{searchText}}</p>
+<div ng-controller="HomeCtrl as hm">
+    <h1>Welcome to WeDB</h1>
     
-    <p>{{testapi}}</p>
-    <p>selected Title: {{selectedItem.title }}</p>
-    <p>selected Id: {{selectedItem.id }}</p>
-    
-    <!--Search Text-->
-    <h2>Step 1: Search Text box</h2>
-    <div class="searchSection">
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>Search for Movie Title</label>
-            <input ng-model="searchText">
-        </md-input-container>
-        <div class="searchBtnGroup">
-            <md-button class="md-fab md-primary" aria-label="Info">i</md-button>
-            <md-button class="md-fab md-primary" aria-label="Add" ng-click="addMovie()">+</md-button>
-            <md-button class="md-fab" aria-label="Search" ng-click="getMatches(searchText)">S</md-button>
-        </div>
-    </div>
-    <!--List of Results-->
-    <h3>List of Movie Results</h3>
-    <div class="itemList">
-        <div class="item" ng-repeat="item in results.results" ng-click="selectMovieMatch(item)">
-            <div class="itemImg">
-                <img src="http://image.tmdb.org/t/p/w500{{item.poster_path}}" ng-if="item.poster_path != null ">
-                <div ng-if="item.poster_path == null">NO IMG</div>
-            </div>
-            <div class="itemInfo">
-                <div class="itemTitle">{{item.title}}</div>
-                <div class="itemYear">{{item.release_date | date:'MMM dd, yyyy'}}</div>
-            </div>
-        </div>
-        
-        <div>Total Pages: {{ results.total_pages}}</div>
-    </div>
-    
-    <!--Selected Movies-->
-    <h2>Step 2: Selected Movies</h2>
-    <p>selected Movies: {{ selectedMovies.length }}</p>
-    <md-chips ng-model="selectedMovies">
-      <md-chip-template>
-        <strong>{{$chip.title}} ({{$chip.release_date | date:'MMM dd, yyyy' }} )</strong>
-      </md-chip-template>
-    </md-chips>
-    <md-button class="md-fab md-primary" aria-label="Compare" ng-click="compareCasts()">C</md-button>
-    <!--Movie Compare-->
-    <div>
-        <h2>Step 3: Movie Compare</h2>
-        <p>Individual results: {{selectedCast.length}}</p>
-        <ul>
-            <li ng-repeat="movie in selectedCast">{{movie.title}}
-                <ul>
-                    <li ng-repeat="actor in movie.cast">{{actor.name}}</li>
-                </ul>
-            </li>
-        </ul>
-        <p>Compared results:{{comparedCast.length}}</p>
-        <ul>
-            <li ng-repeat="compare in comparedCast"> {{compare.movie1}} && {{compare.movie2}}
-                <ul>
-                    <li ng-repeat="cast in compare.matchedCast">{{cast.name}} ({{cast.id}})</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    
-    
+    <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="8px" md-gutter-gt-sm="4px" >
+        <md-grid-tile ng-repeat="card in cards | orderBy: 'order'" md-rowspan="{{card.row}}" md-colspan="{{card.col}}" md-colspan-sm="1" class="we-card ng-animate ng-enter ng-enter-active" ng-class="card.cardclass" >
+          <div class="we-card-body">
+              <div class="cardcollapse">
+                  <i class="fa" ng-class="(card.col < 6)?'fa-plus-circle' : 'fa-minus-circle'" ng-click="toggleCard(card)"></i>
+              </div>
+              <!--small card size-->
+              <div class="small-card" ng-if="card.col==2">
+                  <h2>small</h2>
+              </div>
+              <!--medium card size-->
+              <div class="medium-card" ng-if="card.col==3">
+                  <h2>{{ card.title }}</h2>
+              </div>
+              <!--large card size-->
+              <div class="large-card" ng-if="card.col==6">
+                  <div ng-include='"movie.html"' ng-if="card.type=='movie'" class="cardContainer"></div>
+                  <div ng-include='"uc.html"' ng-if="card.type!='movie'" class="cardContainer"></div>
+              </div>
+          </div>
+        </md-grid-tile>
+    </md-grid-list>
 </div>

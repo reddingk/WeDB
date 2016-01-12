@@ -13,6 +13,10 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bootstrap-sass','3.2.0.0'
 # Font Awesome
 gem 'font-awesome-rails'
+# Use Angular templates with rails
+gem 'angular-rails-templates'
+gem 'sprockets', '2.12.3'
+
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

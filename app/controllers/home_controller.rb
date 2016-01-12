@@ -4,4 +4,8 @@ class HomeController < ApplicationController
 
   def construction
   end
+  
+  def beta
+  end
+  
 end

@@ -1,0 +1,72 @@
+<p>BETA</p>
+<a href="/">< Back</a>
+<div ng-controller="BetaCtrl">
+    <h1>{{pagetitle}}</h1>
+    <p>Search Text: {{searchText}}</p>
+    
+    <p>{{testapi}}</p>
+    <p>selected Title: {{selectedItem.title }}</p>
+    <p>selected Id: {{selectedItem.id }}</p>
+    
+    <!--Search Text-->
+    <h2>Step 1: Search Text box</h2>
+    <div class="searchSection">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Search for Movie Title</label>
+            <input ng-model="searchText">
+        </md-input-container>
+        <div class="searchBtnGroup">
+            <md-button class="md-fab md-primary" aria-label="Info">i</md-button>
+            <md-button class="md-fab md-primary" aria-label="Add" ng-click="addMovie()">+</md-button>
+            <md-button class="md-fab" aria-label="Search" ng-click="getMatches(searchText)">S</md-button>
+        </div>
+    </div>
+    <!--List of Results-->
+    <h3>List of Movie Results</h3>
+    <div class="itemList">
+        <div class="item" ng-repeat="item in results.results" ng-click="selectMovieMatch(item)">
+            <div class="itemImg">
+                <img src="http://image.tmdb.org/t/p/w500{{item.poster_path}}" ng-if="item.poster_path != null ">
+                <div ng-if="item.poster_path == null">NO IMG</div>
+            </div>
+            <div class="itemInfo">
+                <div class="itemTitle">{{item.title}}</div>
+                <div class="itemYear">{{item.release_date | date:'MMM dd, yyyy'}}</div>
+            </div>
+        </div>
+        
+        <div>Total Pages: {{ results.total_pages}}</div>
+    </div>
+    
+    <!--Selected Movies-->
+    <h2>Step 2: Selected Movies</h2>
+    <p>selected Movies: {{ selectedMovies.length }}</p>
+    <md-chips ng-model="selectedMovies">
+      <md-chip-template>
+        <strong>{{$chip.title}} ({{$chip.release_date | date:'MMM dd, yyyy' }} )</strong>
+      </md-chip-template>
+    </md-chips>
+    <md-button class="md-fab md-primary" aria-label="Compare" ng-click="compareCasts()">C</md-button>
+    <!--Movie Compare-->
+    <div>
+        <h2>Step 3: Movie Compare</h2>
+        <p>Individual results: {{selectedCast.length}}</p>
+        <ul>
+            <li ng-repeat="movie in selectedCast">{{movie.title}}
+                <ul>
+                    <li ng-repeat="actor in movie.cast">{{actor.name}}</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Compared results:{{comparedCast.length}}</p>
+        <ul>
+            <li ng-repeat="compare in comparedCast"> {{compare.movie1}} && {{compare.movie2}}
+                <ul>
+                    <li ng-repeat="cast in compare.matchedCast">{{cast.name}} ({{cast.id}})</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    
+</div>
