@@ -12,6 +12,9 @@ app.factory('api', function(){
             },
             getMovieCredits: function(id) {
                 return baseurl + "movie/"+id+"/credits?api_key="+apikey;
+            },
+            getMovieInfo: function(id) {
+                return baseurl + "movie/"+id+"?api_key="+apikey;
             }
         }
     }

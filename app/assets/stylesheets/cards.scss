@@ -78,9 +78,17 @@
     background: rgba(0,0,0,1);
     color: rgba(255,0,0,0.9);
 }
-
+.results-arrow {
+    cursor: pointer;
+}
 .searchResults .itemList table .item .itemInfo div {
     display: block;
+}
+.itemInfo { 
+    width: 65%;
+}
+.itemButtons {
+    display: inline-block;    
 }
 
 .compare-tile {
@@ -93,4 +101,14 @@
 .compare-tile figure div {
     display: block;
     width: 100%;
+}
+
+.we-movies-selected {
+    display: block;
+    width: 100%;
+    border-left: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+.we-movies-selected + .we-movies-selected {
+    margin-top: 5px;
 }

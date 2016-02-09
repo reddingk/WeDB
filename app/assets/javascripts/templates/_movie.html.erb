@@ -1,19 +1,9 @@
 <div ng-controller="MovieCtrl" class="lrgCard movie-card">
     <h3>{{pagetitle}}</h3>
-    <div class="we-row">
-        <!--Selected Movies-->
-        <div class="selectedMovies">
-            <md-chips ng-model="selectedObjects">
-              <md-chip-template>
-                <strong>{{$chip.title}} ({{$chip.release_date | date:'MMM dd, yyyy' }} )</strong>
-              </md-chip-template>
-            </md-chips>
-            <md-button class="md-fab md-mini md-primary" aria-label="Compare" ng-click="compareItems()"><i class="fa fa-balance-scale"></i></md-button>
-        </div>
-    </div>
     
-    <div class="we-row">
-        <div class="searchMovie">
+    <div class="we-row" layout="row">
+        <!--Search Movie-->
+        <div class="searchMovie" flex="65">
             <!--Search text box-->
             <div class="searchSection">
                 <md-input-container class="md-block searchBar" flex-gt-sm>
@@ -21,8 +11,6 @@
                     <input ng-model="searchText">
                 </md-input-container>
                 <div class="searchBtnGroup">
-                    <md-button class="md-fab md-mini md-primary" aria-label="Info" ng-click="getObjectInfo()"><i class="fa fa-info"></i></md-button>
-                    <md-button class="md-fab md-mini md-primary" aria-label="Add" ng-click="addObject()"><i class="fa fa-plus"></i></md-button>
                     <md-button class="md-fab md-mini" aria-label="Search" ng-click="getMatches(searchText)"><i class="fa fa-search"></i></md-button>
                 </div>
             </div>
@@ -31,7 +19,8 @@
             <div class="searchResults">
                 <div class="itemList" ng-show="showItems">
                     <table>
-                        <tr class="item" ng-repeat="item in results.results" ng-click="selectObjectMatch(item)">
+                        <!--<tr class="item" ng-repeat="item in results.results" ng-click="selectObjectMatch(item)">-->
+                        <tr class="item" ng-repeat="item in results.results">
                             <td class="itemImg">
                                 <img src="http://image.tmdb.org/t/p/w500{{item.poster_path}}" ng-if="item.poster_path != null ">
                                 <div ng-if="item.poster_path == null" class="no-img">NO IMAGE</div>
@@ -40,18 +29,41 @@
                                 <div class="itemTitle">{{item.title}}</div>
                                 <div class="itemYear">{{item.release_date | date:'MMM dd, yyyy'}}</div>
                             </td>
+                            <td class="itemButtons">
+                                <md-button class="md-fab md-mini md-primary" aria-label="Info" ng-click="getObjectInfo()"><i class="fa fa-info"></i></md-button>
+                                <md-button class="md-fab md-mini md-primary" aria-label="Add" ng-click="addObject(item)"><i class="fa fa-plus"></i></md-button>
+                            </td>
                         </tr>
                     </table>
                     
                     <div><i class="fa fa-arrow-circle-left results-arrow" ng-if="results.page > 1" ng-click="getMatchesByPage(searchText, results.page-1)"></i> <span>Page: {{results.page}} of {{ results.total_pages}}</span> <i class="fa fa-arrow-circle-right results-arrow" ng-if="results.page < results.total_pages" ng-click="getMatchesByPage(searchText, results.page+1)"></i></div>
                 </div>
             </div>
-            
+        </div>
+        
+        <!--Selected Movies-->
+        <div class="selectedMovies" flex="34">
+            <!--Selected Movies-->
+            <div class="selectedMovies">
+                <!--<md-chips ng-model="selectedObjects">
+                  <md-chip-template>
+                    <strong>{{$chip.title}} ({{$chip.release_date | date:'MMM dd, yyyy' }} )</strong>
+                  </md-chip-template>
+                </md-chips>-->
+                <div class="we-movies-selected" ng-repeat="n in [0,1,2]">
+                    <div ng-if="selectedObjects[n]==null">-----</div> 
+                    <div ng-if="selectedObjects[n]!=null">
+                        <strong>{{selectedObjects[n].title}} ({{selectedObjects[n].release_date | date:'MMM dd, yyyy' }} )</strong>
+                    </div>
+                </div>
+                
+                <md-button class="md-fab md-mini md-primary" aria-label="Compare" ng-click="compareItems()"><i class="fa fa-balance-scale"></i></md-button>
+            </div>
         </div>
     </div>
     
     <div class="we-row">
-        <!--compare results-->
+        <!--Compare results-->
         <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="8" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="8px" md-gutter-gt-sm="4px" class="compare-tiles" >
             <md-grid-tile ng-repeat="compare in comparedItem" md-rowspan="{{cmpresults.rowspan}}" md-colspan="{{cmpresults.colspan}}" md-colspan-sm="1" class="compare-tile">
                 <md-grid-tile-header>
@@ -65,4 +77,5 @@
             </md-grid-tile>
         </md-grid-list>
     </div>
+    
 </div>
