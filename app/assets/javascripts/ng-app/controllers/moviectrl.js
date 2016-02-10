@@ -53,8 +53,7 @@ app.controller('MovieCtrl', function ($scope, $timeout, $http, $filter, api) {
         self.searchText = movieitem.title + " ( " + $filter('date')(movieitem.release_date, "MMM dd, yyyy") +" )";
     }
     /*Get Movie Info*/
-    self.getObjectInfo = function() {
-        var movieid = self.selected_Object.id;
+    self.getObjectInfo = function(movieid) {
         $timeout.cancel(promise);
         promise = $timeout( function(){
             if(movieid != ""){
@@ -98,6 +97,15 @@ app.controller('MovieCtrl', function ($scope, $timeout, $http, $filter, api) {
             if(!found) { 
                 self.selectedObjects.push(item);
                 self.searchText = "";
+            }
+        }
+    }
+    /*Remove Movie from List*/
+    self.removeObject = function(item) {
+        for(var i = 0; i < self.selectedObjects.length; i++) {
+            if (self.selectedObjects[i].id == item.id) {
+                self.selectedObjects.splice(i, 1);
+                break;
             }
         }
     }

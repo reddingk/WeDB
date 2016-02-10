@@ -1,7 +1,7 @@
 <div ng-controller="MovieCtrl" class="lrgCard movie-card">
     <h3>{{pagetitle}}</h3>
     
-    <div class="we-row" layout="row">
+    <div class="we-row we-search-row" layout="row">
         <!--Search Movie-->
         <div class="searchMovie" flex="65">
             <!--Search text box-->
@@ -30,7 +30,7 @@
                                 <div class="itemYear">{{item.release_date | date:'MMM dd, yyyy'}}</div>
                             </td>
                             <td class="itemButtons">
-                                <md-button class="md-fab md-mini md-primary" aria-label="Info" ng-click="getObjectInfo()"><i class="fa fa-info"></i></md-button>
+                                <md-button class="md-fab md-mini md-primary" aria-label="Info" ng-click="getObjectInfo(item.id)"><i class="fa fa-info"></i></md-button>
                                 <md-button class="md-fab md-mini md-primary" aria-label="Add" ng-click="addObject(item)"><i class="fa fa-plus"></i></md-button>
                             </td>
                         </tr>
@@ -51,18 +51,19 @@
                   </md-chip-template>
                 </md-chips>-->
                 <div class="we-movies-selected" ng-repeat="n in [0,1,2]">
-                    <div ng-if="selectedObjects[n]==null">-----</div> 
-                    <div ng-if="selectedObjects[n]!=null">
-                        <strong>{{selectedObjects[n].title}} ({{selectedObjects[n].release_date | date:'MMM dd, yyyy' }} )</strong>
+                    <div ng-if="selectedObjects[n]==null" class="no-object">---</div> 
+                    <div ng-if="selectedObjects[n]!=null" class="active-object">
+                        <span class="removeSelected" ng-click="removeObject(selectedObjects[n])"><i class="fa fa-times-circle"></i></span> <strong>{{selectedObjects[n].title}} ({{selectedObjects[n].release_date | date:'MMM dd, yyyy' }} )</strong>
                     </div>
                 </div>
                 
                 <md-button class="md-fab md-mini md-primary" aria-label="Compare" ng-click="compareItems()"><i class="fa fa-balance-scale"></i></md-button>
             </div>
         </div>
+        <div style="clear:both"></div>
     </div>
     
-    <div class="we-row">
+    <div class="we-row we-results-row">
         <!--Compare results-->
         <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="8" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="8px" md-gutter-gt-sm="4px" class="compare-tiles" >
             <md-grid-tile ng-repeat="compare in comparedItem" md-rowspan="{{cmpresults.rowspan}}" md-colspan="{{cmpresults.colspan}}" md-colspan-sm="1" class="compare-tile">

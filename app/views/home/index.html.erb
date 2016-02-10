@@ -2,7 +2,7 @@
     <h1>Welcome to WeDB</h1>
     
     <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="8px" md-gutter-gt-sm="4px" >
-        <md-grid-tile ng-repeat="card in cards | orderBy: 'order'" md-rowspan="{{card.row}}" md-colspan="{{card.col}}" md-colspan-sm="1" class="we-card ng-animate ng-enter ng-enter-active" ng-class="card.cardclass" >
+        <md-grid-tile ng-repeat="card in cards | orderBy: 'order'" md-rowspan="{{card.row}}" md-colspan="{{card.col}}" md-colspan-sm="1" class="we-card ng-animate ng-enter ng-enter-active" ng-class="card.col > 4 ? 'cLrg': card.cardclass" >
           <div class="we-card-body">
               <div class="cardcollapse">
                   <i class="fa" ng-class="(card.col < 6)?'fa-plus-circle' : 'fa-minus-circle'" ng-click="toggleCard(card)"></i>

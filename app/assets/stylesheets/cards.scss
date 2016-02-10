@@ -29,21 +29,28 @@
     display: block;
     width: 100%;
 }
-
-.searchMovie {  width: 100%; }
-.selectedMovies { width: 100%;}
+.searchMovie {  
+    width: 100%;
+    position: absolute;
+    top: 0px;
+}
+.selectedMovies { 
+    width: 100%; 
+    position: absolute;
+    top: 0px;
+    right: 0px; 
+}
 
 .searchMovie .searchBtnGroup, .searchMovie .searchBar {
     display: inline-block;
-    width: 49%;
 }
 
 .lrgCard .searchMovie .searchSection md-input-container label {
-    color: rgba(255,255,255,1);
+    color: rgba(0,0,0,1);
 }
 
 .lrgCard .searchMovie .searchSection md-input-container .md-input {
-    color: rgba(255,255,255,1);
+    color: rgba(0,0,0,1);
 }
 
 .searchResults {
@@ -103,12 +110,32 @@
     width: 100%;
 }
 
-.we-movies-selected {
+.we-movies-selected{
     display: block;
     width: 100%;
-    border-left: 1px solid #000000;
-    border-bottom: 1px solid #000000;
 }
 .we-movies-selected + .we-movies-selected {
     margin-top: 5px;
+}
+
+.no-object {
+    padding: 10px;
+	text-align: center;
+	border: 3px dashed #000000;
+	width: 80%;
+}
+
+.active-object {
+    border: 2px solid #000000;
+    border-radius: 25px 0px 0px 25px;
+    padding: 10px;
+}
+
+.we-search-row {
+    position: relative;
+    height:100%;
+}
+.removeSelected {
+    cursor: pointer;
+    color: #ccc;
 }

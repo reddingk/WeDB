@@ -8,12 +8,16 @@ $blue: rgba(0,0,255,0.7);
 $red: rgba(255,0,0,0.7);
 $green: rgba(0,153,0,0.7);
 $orange: rgba(255,102,0,0.7);
+$grey: rgba(204,204,204,0.7);
+
 
 /**/
 .c1 { background: $blue; }
 .c2 { background: $red; }
 .c3 { background: $green; }
 .c4 { background: $orange; }
+
+.cLrg { background: $grey; }
 
 .we-card {
     transition:0.5s linear all;

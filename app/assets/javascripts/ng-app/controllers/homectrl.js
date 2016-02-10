@@ -10,7 +10,7 @@ app.controller('HomeCtrl', function ($scope, $timeout, $http, $filter, api) {
             {order: '3', row: '1', col:'3', title:'Tv', controller:'', type:'tv', cardclass:'c3' },
             {order: '4', row: '1', col:'3', title:'Special', controller:'SpecialCtrl', type:'special', cardclass:'c4' }
         ];
-        
+    
     self.toggleCard = function(card) {
         if(card.col < '6'){
             self.selectedCard = card.title;
