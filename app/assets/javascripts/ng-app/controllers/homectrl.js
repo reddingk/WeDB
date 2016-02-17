@@ -5,10 +5,10 @@ app.controller('HomeCtrl', function ($scope, $timeout, $http, $filter, api) {
     
     self.selectedCard="";
     self.cards = [
-            {order: '2', row: '1', col:'3', title:'Cast', controller:'', type:'cast', cardclass:'c2' },
+            {order: '2', row: '1', col:'3', title:'Cast', controller:'CastCtrl', type:'cast', cardclass:'c2' },
             {order: '1', row: '1', col:'3', title:'Movie', controller:'MovieCtrl', type:'movie', cardclass:'c1' },
             {order: '3', row: '1', col:'3', title:'Tv', controller:'', type:'tv', cardclass:'c3' },
-            {order: '4', row: '1', col:'3', title:'Special', controller:'SpecialCtrl', type:'special', cardclass:'c4' }
+            {order: '4', row: '1', col:'3', title:'Special', controller:'', type:'special', cardclass:'c4' }
         ];
     
     self.toggleCard = function(card) {

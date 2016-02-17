@@ -16,6 +16,17 @@ app.factory('api', function(){
             getMovieInfo: function(id) {
                 return baseurl + "movie/"+id+"?api_key="+apikey;
             }
+        },
+        cast : {
+            searchname: function(query) {
+                return  baseurl + "search/person?api_key="+apikey+"&query="+query;
+            },
+            searchName_Page: function(query, page){
+                return baseurl + "search/person?api_key="+apikey+"&page="+ page +"&query="+query;
+            },
+            getCastCredits: function(id) {
+                return baseurl + "person/"+id+"/movie_credits?api_key="+apikey;
+            }
         }
     }
 });

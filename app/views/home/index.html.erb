@@ -18,7 +18,8 @@
               <!--large card size-->
               <div class="large-card" ng-if="card.col==6">
                   <div ng-include='"_movie.html"' ng-if="card.type=='movie'" class="cardContainer"></div>
-                  <div ng-include='"uc.html"' ng-if="card.type!='movie'" class="cardContainer"></div>
+                  <div ng-include='"_cast.html"' ng-if="card.type=='cast'" class="cardContainer"></div>
+                  <div ng-include='"uc.html"' ng-if="card.controller ==''" class="cardContainer"></div>
               </div>
           </div>
         </md-grid-tile>
