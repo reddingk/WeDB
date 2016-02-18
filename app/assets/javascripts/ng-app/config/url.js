@@ -26,6 +26,23 @@ app.factory('api', function(){
             },
             getCastCredits: function(id) {
                 return baseurl + "person/"+id+"/movie_credits?api_key="+apikey;
+            },
+            getCastInfo: function(id) {
+                return baseurl + "person/"+id+"?api_key="+apikey;
+            }
+        },
+        tv : {
+            searchname: function(query){
+                return baseurl + "search/tv?api_key="+apikey+"&query="+query;
+            },
+            searchName_Page: function(query, page){
+                return baseurl + "search/tv?api_key="+apikey+"&page="+ page +"&query="+query;
+            },
+            getTvCredits: function(id) {
+                return baseurl + "tv/"+id+"/credits?api_key="+apikey;
+            },
+            getTvInfo: function(id) {
+                return baseurl + "tv/"+id+"?api_key="+apikey;
             }
         }
     }

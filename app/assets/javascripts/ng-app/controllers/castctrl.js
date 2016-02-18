@@ -118,8 +118,8 @@ app.controller('CastCtrl', function ($scope, $timeout, $http, $filter, api) {
         for(var i = 0; i < castA.cast.length; i++) {
             for(var j=0; j < castB.cast.length; j++) {
                if(castA.cast[i].id == castB.cast[j].id){
-                    tmpCast.push({id: castA.cast[i].id, title: castA.cast[i].title, poster_path: castA.cast[i].poster_path });
-                    console.log("1} " + castA.name + " 2}" + castB.name + " : " + castA.cast[i].title)
+                    tmpCast.push({id: castA.cast[i].id, title: castA.cast[i].title, profile_path: castA.cast[i].profile_path });
+                    console.log("1} " + castA.name + " 2}" + castB.name + " : " + castA.cast[i].title);
                     break;
                }
             }
@@ -133,7 +133,7 @@ app.controller('CastCtrl', function ($scope, $timeout, $http, $filter, api) {
             for(var j=0; j < castB.cast.length; j++) {
                 for(var k=0; k < castC.cast.length; k++) {
                    if((castA.cast[i].id == castB.cast[j].id) && (castB.cast[j].id == castC.cast[k].id)){
-                        tmpCast.push({id: castA.cast[i].id, title: castA.cast[i].title, profile_path: castA.cast[i].poster_path });
+                        tmpCast.push({id: castA.cast[i].id, title: castA.cast[i].title, profile_path: castA.cast[i].profile_path });
                         break;
                    }
                 }
