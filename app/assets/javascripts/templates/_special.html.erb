@@ -1,0 +1,30 @@
+<div ng-controller="SpecialCtrl" class="lrgCard cast-card">
+    <h3>{{pagetitle}}</h3>
+    <div ng-show="showInfo">
+        <div class="we-maininfo-row" layout="row">
+            <div class="special-poster" flex="34">
+                <img src="http://image.tmdb.org/t/p/w500{{movieinfo.poster_path}}" ng-if="movieinfo.poster_path != null ">
+                <div ng-if="movieinfo.poster_path == null" class="no-img">NO IMAGE</div>
+            </div>
+            
+            <div class="special-info" flex="65">
+                <div class="objectTitle">{{movieinfo.title}}</div>
+                <div class="objectYear">{{movieinfo.release_date | date:'MMM dd, yyyy'}}</div>
+                <div class="objectTitle">{{movieinfo.overview}}</div>
+            </div>
+        </div>
+        
+        <div class="we-maininfo-row" layout="row">
+            <div class="special-cast" flex="34">
+                <h3>CAST</h3>
+                <ul class="fa-ul">
+                    <li ng-repeat="cast in selectedItem.cast"><i class="fa fa-user"></i> {{cast.name}}</li>
+                </ul>
+            </div>
+            
+            <div class="special-facts" flex="65">
+                
+            </div>
+        </div>
+    </div>
+</div>

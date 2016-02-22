@@ -49,6 +49,7 @@ app.controller('CastCtrl', function ($scope, $timeout, $http, $filter, api) {
             }
         }
     }
+    
     /*Remove Cast from List*/
     self.removeObject = function(item) {
         for(var i = 0; i < self.selectedObjects.length; i++) {

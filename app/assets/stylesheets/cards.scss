@@ -174,3 +174,25 @@ $orange: rgba(255,102,0,0.7);
 .movie-compare-header {
     background-color: $blue;
 }
+
+/* Special Card*/
+.we-maininfo-row {
+    height: 250px;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+.we-maininfo-row .special-poster{
+    overflow: hidden;
+}
+
+.we-maininfo-row .special-poster img {
+    max-height: 250px;
+}
+.special-poster, .special-info, .special-cast, .special-facts {
+    float: left; 
+    display: inline;
+}
+.special-cast {
+    overflow-y: scroll;
+}
